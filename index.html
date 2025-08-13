@@ -29,7 +29,7 @@
             },
             ru: {
                 title: "Сайт -inf",
-                description: "Официальный сайт -inf",
+                description: "Персональный сайт -inf с информацией о нём, его творчеством и соцсетями",
                 header: "Добро пожаловать"
             }
         };
@@ -42,40 +42,19 @@
             //...
             
             document.documentElement.lang = lang;
-            
             localStorage.setItem('preferredLang', lang);
         }
 
         function changeLanguage(lang) {
-            const isLocal = window.location.protocol === 'file:';
-            
-            if (isLocal) {
-                setLanguage(lang);
-            } else {
-                if (lang === 'ru') {
-                    window.location.href = '/ru/';
-                } else {
-                    window.location.href = '/';
-                }
-            }
+            setLanguage(lang);
         }
 
         function initLanguage() {
             const storedLang = localStorage.getItem('preferredLang');
             const userLang = navigator.language.slice(0, 2);
             
-            const isLocal = window.location.protocol === 'file:';
-            
-            if (isLocal) {
-                document.getElementById('localTestingIndicator').style.display = 'block';
-                setLanguage(storedLang || (userLang === 'ru' ? 'ru' : 'en'));
-            } else {
-                if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-                    if ((!storedLang && userLang === 'ru') || storedLang === 'ru') {
-                        window.location.href = '/ru/';
-                    }
-                }
-            }
+            const langToSet = storedLang || (userLang === 'ru' ? 'ru' : 'en');
+            setLanguage(langToSet);
         }
 
         window.onload = initLanguage;
