@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="-inf's personal site with information about him, his art and socials">
+        <meta name="keywords" content="-inf, infgotoinf, inf:goto inf;, Didgital art, Music, Video editing, Audio editing, Programming, 3D modeling, Games, Commisions, Colors, Spectrum">
+        <meta name="author" content="-inf">
+        <title>They know me as -inf</title>
+        <link rel="icon" href="static/assets/favicon.ico">
+        <link rel="stylesheet" href="static/styles.css">
+        <script> // to rederect
+          const storedLang = localStorage.getItem('preferredLang');
+          const userLang = navigator.language.slice(0, 2);
+          if ((!storedLang && userLang === 'ru') || storedLang === 'ru') {
+              window.location.href = '/ru/index.html';
+          }
+        </script>
+    </head>
+    
+    <body>
+        <div class="language-switcher">
+          <button onclick="changeLanguage('en')">English</button>
+          <button onclick="changeLanguage('ru')">Русский</button>
+        </div>
+
+        <script>
+            function changeLanguage(lang) {
+              localStorage.setItem('preferredLang', lang);
+
+              const currentPath = window.location.pathname;
+              const isRussianPage = currentPath.startsWith('/ru/');
+
+              if (lang === 'ru' && !isRussianPage) {
+                window.location.href = '/ru' + currentPath;
+              } 
+              else if (lang === 'en' && isRussianPage) {
+                window.location.href = currentPath.replace('/ru', '');
+              }
+            }
+        </script>
+        
+    </body>
+</html>

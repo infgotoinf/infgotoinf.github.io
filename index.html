@@ -1,44 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="-inf's personal site with information about him, his art and socials">
-        <meta name="keywords" content="-inf, infgotoinf, inf:goto inf;, Didgital art, Music, Video editing, Audio editing, Programming, 3D modeling, Games, Commisions, Colors, Spectrum">
-        <meta name="author" content="-inf">
-        <title>They know me as -inf</title>
-        <link rel="icon" href="static/assets/favicon.ico">
-        <link rel="stylesheet" href="static/styles.css">
-        <script> // to rederect
-          const storedLang = localStorage.getItem('preferredLang');
-          const userLang = navigator.language.slice(0, 2);
-          if ((!storedLang && userLang === 'ru') || storedLang === 'ru') {
-              window.location.href = '/ru/index.html';
-          }
-        </script>
-    </head>
-    
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An official -inf's site">
+    <meta name="keywords" content="-inf, infgotoinf, inf:goto inf;, Digital art, Music, Video editing, Audio editing, Programming, 3D modeling, Games, Commissions, Colors, Spectrum">
+    <meta name="author" content="-inf">
+    <title>They know me as -inf</title>
+    <link rel="icon" href="static/assets/favicon.ico">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
         <div class="language-switcher">
-          <button onclick="changeLanguage('en')">English</button>
-          <button onclick="changeLanguage('ru')">Русский</button>
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('ru')">Русский</button>
         </div>
-
-        <script>
-            function changeLanguage(lang) {
-              localStorage.setItem('preferredLang', lang);
-
-              const currentPath = window.location.pathname;
-              const isRussianPage = currentPath.startsWith('/ru/');
-
-              if (lang === 'ru' && !isRussianPage) {
-                window.location.href = '/ru' + currentPath;
-              } 
-              else if (lang === 'en' && isRussianPage) {
-                window.location.href = currentPath.replace('/ru', '');
-              }
-            }
-        </script>
         
-    </body>
+        <h1 id="header">Welcome</h1>
+    </div>
+
+    <script>
+        const content = {
+            en: {
+                title: "-inf site",
+                description: "-inf's personal site with information about him, his art and socials",
+                header: "Welcome"
+            },
+            ru: {
+                title: "Сайт -inf",
+                description: "Официальный сайт -inf",
+                header: "Добро пожаловать"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelector('meta[name="description"]').content = content[lang].description;
+            document.title = content[lang].title;
+            
+            document.getElementById('header').textContent = content[lang].header;
+            //...
+            
+            document.documentElement.lang = lang;
+            
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        function changeLanguage(lang) {
+            const isLocal = window.location.protocol === 'file:';
+            
+            if (isLocal) {
+                setLanguage(lang);
+            } else {
+                if (lang === 'ru') {
+                    window.location.href = '/ru/';
+                } else {
+                    window.location.href = '/';
+                }
+            }
+        }
+
+        function initLanguage() {
+            const storedLang = localStorage.getItem('preferredLang');
+            const userLang = navigator.language.slice(0, 2);
+            
+            const isLocal = window.location.protocol === 'file:';
+            
+            if (isLocal) {
+                document.getElementById('localTestingIndicator').style.display = 'block';
+                setLanguage(storedLang || (userLang === 'ru' ? 'ru' : 'en'));
+            } else {
+                if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+                    if ((!storedLang && userLang === 'ru') || storedLang === 'ru') {
+                        window.location.href = '/ru/';
+                    }
+                }
+            }
+        }
+
+        window.onload = initLanguage;
+    </script>
+</body>
 </html>
