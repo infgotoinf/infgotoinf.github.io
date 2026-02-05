@@ -4,57 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="An official -inf's site">
-    <meta name="keywords" content="-inf, infgotoinf, inf:goto inf;, Digital art, Music, Video editing, Audio editing, Programming, 3D modeling, Games, Commissions, Colors, Spectrum">
+    <meta name="keywords" content="-inf, infgotoinf, inf:goto inf;, personal site, персональный сайт, art, арт, искусство, digital art, дижджитал арт, цифровой арт, music, музыка, video editing, видио эдитинг, монтаж, audio editing, аудио эдитинг, programming, прогаммирование, 3D modeling, 3Д моделирование, games, игры, commissions, комишки, сolors, цвета, spectrum, спектр">
     <meta name="author" content="-inf">
     <title>They know me as -inf</title>
     <link rel="icon" href="static/assets/favicon.ico">
     <link rel="stylesheet" href="static/styles.css">
+    <script src="static/lang-switch.js"></script>
 </head>
+
 <body>
-    <div class="container">
-        <div class="language-switcher">
-        <button onclick="changeLanguage('en')">English</button>
-        <button onclick="changeLanguage('ru')">Русский</button>
-        </div>
-        
-        <h1 id="header">Welcome</h1>
+    <!---------------------------------------------------------------------------------------------->
+    <!-- Background -------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------------------->
+    <!-- (was replased with colored numbers)-->
+    <!-- <img class="background-gif" src="static/assets/rainbow-liquid.gif">-->
+    <div class="square">
+        <div id="square"></div>
+    </div>
+    <div id="numbers-bg">
+        <p id="numbers"></p>
     </div>
 
-    <script>
+    <!---------------------------------------------------------------------------------------------->
+    <!-- Top panel --------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------------------->
+    <div class="top-panel">
+        <div class="language-switcher">
+            <!-- Inwoke function from lang-switch.js -->
+            <button class="language-button" id="en" onclick="changeLanguage('en')">ENG</button>
+            <div class="blank"></div>
+            <div class="line"></div>
+            <div class="blank"></div>
+            <button class="language-button" id="ru" onclick="changeLanguage('ru')">RUS</button>
+        </div>
+        <div class="top-panel-links">
+            <div class="top-panel-link" data-lang="home">HOME</div>
+            <div class="top-panel-link" data-lang="me">ME</div>
+            <div class="top-panel-link" data-lang="art">ART</div>
+            <div class="top-panel-link" data-lang="commisions">COMMISIONS</div>
+        </div>
+    </div>
+
+    <!---------------------------------------------------------------------------------------------->
+    <!-- Content ----------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------------------->
+    <h1 data-lang="header">HOME</h1>
+
+    <img class="pfp" src="static/assets/-gif-white2.gif" alt="pfp" width="300" height="300">
+
+    <h2 class="-inf">-inf</h2>
+
+    <h4 data-lang="my_summary">18; he/him; digital/video/music/3D artist; programmer; totaly normal/not crazy guy; de guy who does de stuff</h4>
+
+    <!---------------------------------------------------------------------------------------------->
+    <!-- Script ------------------------------------------------------------------------------------>
+    <!---------------------------------------------------------------------------------------------->
+    <script src="static/-inf.js"></script>
+    <script> // Handling language switch
         const content = {
             en: {
-                title: "-inf site",
+                title: "They know me as -inf",
                 description: "-inf's personal site with information about him, his art and socials",
-                header: "Welcome"
+                header: "HOME",
+                home: "HOME",
+                me: "ME",
+                art: "ART",
+                commisions: "COMMISIONS",
+                my_summary: "18; he/him; digital/video/music/3D artist, programmer; totaly normal/not crazy guy"
             },
             ru: {
-                title: "Сайт -inf",
+                title: "Меня знают как -inf",
                 description: "Персональный сайт -inf с информацией о нём, его творчеством и соцсетями",
-                header: "Добро пожаловать"
+                header: "ДОМ",
+                home: "ДОМ",
+                me: "Я",
+                art: "АРТ",
+                commisions: "КОММИШКИ",
+                my_summary: "18; цифровой/3D художник, монтажёр, музыкант, программист; абсолютно нормальный/не сумасшедший чел"
             }
         };
 
         function setLanguage(lang) {
             document.querySelector('meta[name="description"]').content = content[lang].description;
             document.title = content[lang].title;
-            
-            document.getElementById('header').textContent = content[lang].header;
-            //...
-            
+
+            const elements = document.querySelectorAll('[data-lang]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (content[lang][key]) {
+                    element.textContent = content[lang][key];
+                }
+            });
+
             document.documentElement.lang = lang;
             localStorage.setItem('preferredLang', lang);
-        }
-
-        function changeLanguage(lang) {
-            setLanguage(lang);
-        }
-
-        function initLanguage() {
-            const storedLang = localStorage.getItem('preferredLang');
-            const userLang = navigator.language.slice(0, 2);
-            
-            const langToSet = storedLang || (userLang === 'ru' ? 'ru' : 'en');
-            setLanguage(langToSet);
         }
 
         window.onload = initLanguage;
