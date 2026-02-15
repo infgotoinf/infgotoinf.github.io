@@ -1,3 +1,14 @@
+main {
+  padding: 10px;
+  margin: auto;
+}
+
 .pfp {
-  display: block;
+  display: inline-block;
+  border: 1px solid;
+}
+
+.general-info {
+  padding: 10px;
+  display: inline-block;
 }

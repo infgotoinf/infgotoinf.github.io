@@ -1,11 +1,39 @@
-h1,
-h2,
-h6 {
-  text-align: center;
-  font-size: 30;
+@font-face {
+  font-family: unifont;
+  src: url(assets/UnifontExMono.woff2) format(woff2);
 }
 
+body {
+  background-color: #1d2021;
+  color: #fbf1c7;
+  border-color: #665c54;
+  font-family: unifont;
+}
+
+h1,
+h2,
+h5,
+h6,
 header,
 footer {
   text-align: center;
+}
+
+h5,
+h6 {
+  font-weight: lighter;
+  color: #bdae93;
+}
+
+a {
+  color: #fbf1c7;
+}
+
+a:hover,
+a:active {
+  font-weight: bold;
+}
+
+.page-link {
+  text-decoration: none;
 }
