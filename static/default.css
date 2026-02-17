@@ -1,13 +1,40 @@
 @font-face {
-  font-family: unifont;
-  src: url(assets/UnifontExMono.woff2) format(woff2);
+  font-family: 'UnifontExMono';
+  src: url(assets/UnifontExMono.woff2) format('woff2');
+  /* ERR_NETWORK_ACCESS_DENIED :( */
+  /* src: url('http://stgiga.github.io/UnifontEX/UnifontExMono.woff2') format('woff2'); */
+}
+
+:root {
+  --black: #1d2021;
+  --base01: #3c3836;
+  --base02: #504945;
+  --gray: #665c54;
+  --light-gray: #bdae93;
+  --base05: #d5c4a1;
+  --base06: #ebdbb2;
+  --white: #fbf1c7;
+  --red: #fb4934;
+  --orange: #fe8019;
+  --yellow: #fabd2f;
+  --green: #b8bb26;
+  --cyan: #8ec07c;
+  --blue: #83a598;
+  --purple: #d3869b;
+  --brown: #d65d0e;
+
+  --bg-color: var(--black);
+  --border-color: var(--gray);
+  --color: var(--white);
+  --second-color: var(--light-gray);
+
+  background-color: var(--bg-color);
+  border-color: var(--border-color);
+  color: var(--color);
 }
 
 body {
-  background-color: #1d2021;
-  color: #fbf1c7;
-  border-color: #665c54;
-  font-family: unifont;
+  font-family: UnifontExMono;
 }
 
 h1,
@@ -22,11 +49,11 @@ footer {
 h5,
 h6 {
   font-weight: lighter;
-  color: #bdae93;
+  color: var(--second-color);
 }
 
 a {
-  color: #fbf1c7;
+  color: var(--color);
 }
 
 a:hover,
