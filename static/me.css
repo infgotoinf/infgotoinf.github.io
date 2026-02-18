@@ -3,12 +3,19 @@ main {
   padding: 10px;
 }
 
+ul {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+}
+
+th,
+td {
+  width: 220px;
+}
+
 .pfp {
   display: inline-block;
   border: 1px solid;
-}
-
-.general-info {
-  display: inline-block;
-  padding: 10px;
 }
