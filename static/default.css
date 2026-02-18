@@ -43,15 +43,14 @@ header {
 
 h1,
 h2,
-h5,
-h6,
 header,
-footer {
+footer,
+.small-text {
   text-align: center;
 }
 
-h5,
-h6 {
+.small-text {
+  font-size: 12px;
   font-weight: lighter;
   color: var(--second-color);
 }
