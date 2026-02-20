@@ -1,0 +1,44 @@
+.search-input {
+  text-align: center;
+  padding: 10px;
+  margin: auto;
+}
+
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+ul {
+  border: 1px solid;
+  list-style-type: none;
+}
+
+ul,
+li,
+img {
+  padding: 0;
+  margin: 0;
+}
+
+.art-name {
+  font-weight: bold;
+  margin-left: 4px;
+  margin-right: -4px;
+}
+
+li,
+img {
+  width: 200px;
+}
+
+@media screen and (max-width: 430px) {
+
+  li,
+  img {
+    width: 45dvw;
+  }
+}

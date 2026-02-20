@@ -5,17 +5,71 @@ main {
 
 ul {
   display: inline-block;
-  list-style-type: none;
+  list-style-type: square;
   margin: 0;
-  padding: 10px;
+  padding-left: 30px;
 }
 
-th,
+table,
+th {
+  margin: 10px 0;
+}
+
 td {
+  width: auto;
+}
+
+.first-column {
   width: 220px;
+}
+
+.blank {
+  text-align: center;
 }
 
 .pfp {
   display: inline-block;
   border: 1px solid;
+}
+
+.rainbow {
+  color: transparent;
+  background-clip: text;
+  animation-name: rainbow;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    background-color: var(--red);
+  }
+
+  14% {
+    background-color: var(--purple);
+  }
+
+  29% {
+    background-color: var(--blue);
+  }
+
+  43% {
+    background-color: var(--cyan);
+  }
+
+  57% {
+    background-color: var(--green);
+  }
+
+  71% {
+    background-color: var(--yellow);
+  }
+
+  86% {
+    background-color: var(--orange);
+  }
+
+  100% {
+    background-color: var(--red);
+  }
 }

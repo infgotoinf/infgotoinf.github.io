@@ -33,17 +33,39 @@
   color: var(--color);
 }
 
-body {
+::selection {
+  background-color: var(--blue);
+}
+
+* {
   font-family: UnifontExMono;
 }
 
-header {
+body {
+  border: 1px solid;
+}
+
+nav,
+header,
+footer {
+  position: relative;
+  z-index: 2;
+}
+
+nav {
   margin-top: 20px;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  margin: auto;
+  max-width: 920px;
 }
 
 h1,
 h2,
-header,
+nav,
 footer,
 .small-text {
   text-align: center;
@@ -66,4 +88,20 @@ a:active {
 
 .page-link {
   text-decoration: none;
+}
+
+
+input {
+  margin: 10px;
+  width: 60%;
+  border: 1px solid;
+  border-radius: 0;
+  background-color: var(--bg-color);
+  color: var(--color);
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid;
+  border-radius: 0;
 }

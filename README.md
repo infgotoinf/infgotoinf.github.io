@@ -33,9 +33,10 @@ Home <-> Art
 |          |
 v          |
 About me <-+
-|   |   v
-|   v  Gruvbox dark-hard git repo
-v  UnifontEX page
+|  |  |
+|  |  v
+|  v Gruvbox dark-hard git repo
+v UnifontEX page
 Unifont page
 ```
 
@@ -57,10 +58,18 @@ About me page:
 | Header navigation links |
 |=========================|
 |         Title           |
-| [=======]               |
-| [pfp pic]               |
-| [=======] List          |
-|   Table  |  Table  |    |
+| [-------] List          |
+| [pfp pic] List          |
+| [-------] List          |
+|                         |
+|   Table  |              |
+| Table    | Table   |    |
+| Table    | Table   |    |
+|                         |
+|   Table  |              |
+| Table    | Table   |    |
+| Table    | Table   |    |
+| Table    | Table   |    |
 | Table    | Table   |    |
 |=========================|
 |     Footer copyright    |
@@ -70,10 +79,11 @@ Art page:
 ```
 | Header navigation links |
 |=========================|
-|         Title           |
-|   [art] [art] [art]     |
+|          Title          |
+|         [input]         |
+|   [pic][pic][pic][pic]  |
 |=========================|
-|      Footer copyright   |
+|     Footer copyright    |
 ```
 
 ## Средства реализации
@@ -108,7 +118,7 @@ base07: "fbf1c7" # ++++ (текст)
 Прогнание сайт через валидатор выдало следующую ошибку
 
 ## Исправление ошибки
-```<h6>``` был заменён на ```<p class="small-text">```
+```<h6>``` был заменён на ```<div class="small-text">```
 
 ## Выводы
 Сайт отвечает всем заявленным требованиям
